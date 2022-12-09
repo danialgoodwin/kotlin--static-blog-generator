@@ -9,3 +9,8 @@ Usage:
 
 Notes:
 - Resource directories that start with `__` (like `__posts/`) are NOT copied to the output directory. All other directories and content are copied.
+
+Awards: Perfect Google Lighthouse score of 100
+
+![Perfect Google Lighthouse score of 100](google-lighthouse-score-100.png)
+
