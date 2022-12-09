@@ -1,3 +1,6 @@
+import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
+import org.intellij.markdown.html.HtmlGenerator
+import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
 
 class StaticBlogGenerator {
@@ -75,10 +78,13 @@ class StaticBlogGenerator {
                     throw Exception("This syntax is not supported yet: $line")
                 }
             } else {
-                content.append(line)
+                content.append(line).append("\n")
             }
         }
-        values["content"] = content.toString()
+        val markdown = content.toString()
+        val flavour = CommonMarkFlavourDescriptor()
+        val parsedTree = MarkdownParser(flavour).buildMarkdownTreeFromString(markdown)
+        values["content"] = HtmlGenerator(markdown, parsedTree, flavour).generateHtml()
         if (!values.contains("slug")) {
             // Remove '.md' and remove spaces
             values["slug"] = file.name.substring(0, file.name.length - 3).replace(' ', '-')
