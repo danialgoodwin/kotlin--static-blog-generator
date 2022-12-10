@@ -3,7 +3,7 @@ Create a minimal static blog using Kotlin.
 
 Usage:
 1. Adjust the home page template and post page template, as needed
-2. Add blog posts to posts/
+2. Add blog posts to src/main/resources/__posts/
 3. Run the app
 4. See the output in out/public/
 
@@ -13,4 +13,3 @@ Notes:
 Awards: Perfect Google Lighthouse score of 100
 
 ![Perfect Google Lighthouse score of 100](google-lighthouse-score-100.png)
-
