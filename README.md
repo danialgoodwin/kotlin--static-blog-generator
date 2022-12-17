@@ -13,3 +13,8 @@ Notes:
 Awards: Perfect Google Lighthouse score of 100
 
 ![Perfect Google Lighthouse score of 100](google-lighthouse-score-100.png)
+
+
+TODO:
+- Feature: Delay blog posts with a future date.
+- Feature: Preload pages when links are hovered
