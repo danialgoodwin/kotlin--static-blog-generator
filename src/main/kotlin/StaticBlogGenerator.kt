@@ -67,6 +67,7 @@ class StaticBlogGenerator {
     private fun parseBlogPostFile(file: File) : Map<String, String> {
         val values = HashMap<String, String>()
         values["date"] = file.name.substring(0, 10)
+        LocalDate.parse(values["date"]) // Check if valid date (year-month-day)
         var isMetadata = true
         val content = StringBuilder()
         file.forEachLine { line ->
