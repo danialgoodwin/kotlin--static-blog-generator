@@ -2,6 +2,7 @@ import org.intellij.markdown.flavours.commonmark.CommonMarkFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
+import java.time.LocalDate
 
 class StaticBlogGenerator {
 
@@ -35,6 +36,7 @@ class StaticBlogGenerator {
         val blogPostPageTemplate = File("src/main/resources/__templates/post.html").readLines().joinToString("\n")
         for (file in files) {
             val metadata = parseBlogPostFile(file)
+            if (isDateInFuture(metadata["date"])) continue // Don't link to future blog posts
             generatePostPage(metadata, blogPostPageTemplate)
             postsListHtml.append("<li><a href=\"${metadata["slug"]}\">${metadata["title"]}</a></li>")
         }
@@ -90,6 +92,12 @@ class StaticBlogGenerator {
             values["slug"] = file.name.substring(0, file.name.length - 3).replace(' ', '-')
         }
         return values
+    }
+
+    private fun isDateInFuture(yearMonthDay: String) : Boolean {
+        val date = LocalDate.parse(yearMonthDay)
+        val dateNow = LocalDate.now()
+        return date.isAfter(dateNow)
     }
 
     private fun log(message: String) {
