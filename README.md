@@ -16,5 +16,4 @@ Awards: Perfect Google Lighthouse score of 100
 
 
 TODO:
-- Feature: Delay blog posts with a future date.
 - Feature: Preload pages when links are hovered

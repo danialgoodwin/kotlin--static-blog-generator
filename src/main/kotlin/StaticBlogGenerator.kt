@@ -3,6 +3,7 @@ import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
 import java.time.LocalDate
+import java.util.Objects
 
 class StaticBlogGenerator {
 
@@ -95,7 +96,8 @@ class StaticBlogGenerator {
         return values
     }
 
-    private fun isDateInFuture(yearMonthDay: String) : Boolean {
+    private fun isDateInFuture(yearMonthDay: String?) : Boolean {
+        Objects.requireNonNull(yearMonthDay)
         val date = LocalDate.parse(yearMonthDay)
         val dateNow = LocalDate.now()
         return date.isAfter(dateNow)
