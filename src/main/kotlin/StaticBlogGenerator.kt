@@ -39,7 +39,7 @@ class StaticBlogGenerator {
             val metadata = parseBlogPostFile(file)
             if (isDateInFuture(metadata["date"])) continue // Don't link to future blog posts
             generatePostPage(metadata, blogPostPageTemplate)
-            postsListHtml.append("<li><a href=\"${metadata["slug"]}\">${metadata["title"]}</a></li>")
+            postsListHtml.append("<li><a href=\"${metadata["slug"]}/\">${metadata["title"]}</a></li>")
         }
         postsListHtml.append("</ul>")
         val homePageHtml = File(template).readLines().joinToString("\n")
