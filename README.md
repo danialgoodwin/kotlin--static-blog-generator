@@ -16,4 +16,4 @@ Awards: Perfect Google Lighthouse score of 100
 
 
 TODO:
-- Feature: Preload pages when links are hovered
+- Add ability to generate other pages
